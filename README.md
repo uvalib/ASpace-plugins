@@ -1,6 +1,9 @@
 # ASpace-plugins
 
 A test space for local ArchivesSpace plugins.
+Some of these could be split into separate repos and projects, but for now 
+they are together for the ease of being able to clone this repo into 
+archivesspace/plugins/local .
 
 
 ### public/views/records/resource.html.erb 
