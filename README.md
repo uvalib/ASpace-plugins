@@ -5,7 +5,7 @@ Some of these could be split into separate repos and projects, but for now
 they are together for the ease of being able to clone this repo into 
 archivesspace/plugins/local .
 
-
+---
 ### public/views/records/resource.html.erb 
 
 For some unexplained reason, some fields do not appear in the public view unless
@@ -16,7 +16,7 @@ See: [[Archivesspace_Users_Group] Fields not appearing in public view
 
 This template is just a copy of the standard view with the conditional changed to "if true" . 
 
-
+---
 ### backend/model/my_ead_converter.rb
 
 I found [moma-ead-converter](https://github.com/quoideneuf/moma-ead-importer) as a template for how to add a new converter via ASpace plugins. 
@@ -54,3 +54,23 @@ It needs an entry in the locales file to keep from getting no-translation errors
 	en:
 	    job:
 	        import_type_my_ead_xml : MyEAD`
+	        
+
+---
+### backend/model/ead_serializer.rb
+
+replacement EAD serializer. 
+
+*v1*  Tag image_url with @id="logostmt" so it can be identified by xsl stylesheets. 
+[upstream push request](https://github.com/archivesspace/archivesspace/pull/132)
+
+	           if data.repo.image_url
+	-            xml.p {
+	+            xml.p ( { "id" => "logostmt" } ) {
+	               xml.extref ({"xlink:href" => data.repo.image_url,
+	                           "xlink:actuate" => "onLoad",
+	                           "xlink:show" => "embed",
+
+
+*v2* [in development] _Trying to figure out how to add URL links to `<address>`_
+
