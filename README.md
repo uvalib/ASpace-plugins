@@ -77,5 +77,36 @@ replacement EAD serializer.
 	                           "xlink:show" => "embed",
 
 
-*v2* [in development] _Trying to figure out how to add URL links to `<address>`_
+*v2* Add URL links to `<address>`
 
+	@@ -633,6 +633,16 @@ class EADSerializer < ASpaceExport::Serializer
+	               data.addresslines.each do |line|
+	                 xml.addressline { sanitize_mixed_content( line, xml, fragments) }  
+	               end
+	+              if data.repo.url 
+	+               xml.addressline ( "URL: " ) { 
+	+                 xml.extptr ( { 
+	+                                               "xlink:href" => data.repo.url,
+	+                                               "xlink:title" => data.repo.url,
+	+                                               "xlink:type" => "simple",
+	+                                               "xlink:show" => "new"
+	+                                               } )
+	+                }
+	+              end
+	             }
+	           end
+	         }
+
+
+---
+### frontend/views/resources/_toolbar.html.erb 
+
+Change option defaults on EAD export to "Use numbered <c> tags" _checked._
+
+	             <label class="checkbox" for="numbered-cs">
+	-              <input type="checkbox" id="numbered-cs" name="numbered_cs" />
+	+              <input type="checkbox" id="numbered-cs" name="numbered_cs"  checked="checked" />
+	               <%= I18n.t("export_options.numbered_cs") %>&#160;
+	             </label>
+	             
+	    
