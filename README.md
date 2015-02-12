@@ -5,6 +5,11 @@ Some of these could be split into separate repos and projects, but for now
 they are together for the ease of being able to clone this repo into 
 archivesspace/plugins/local .
 
+
+The directory structure in place in the ASpace distributions `plugins/local` directory seems to provide a template for which directories are automatically loaded by ArchivesSpace. 
+
+See [LoadingPlugins](LoadingPlugins.md) for more details. 
+
 ---
 ### public/views/records/resource.html.erb 
 
