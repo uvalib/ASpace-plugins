@@ -55,8 +55,8 @@
       "finding_aid_status" => {"type" => "string", "dynamic_enum" => "resource_finding_aid_status"},
       "finding_aid_note" => {"type" => "string", "maxLength" => 65000},
 
-      # Extents (overrides abstract schema)
-      "extents" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" => "JSONModel(:extent) object"}},
+      # Extents (overrides default schema: no longer required)
+      "extents" => {"type" => "array",  "minItems" => 0, "items" => {"type" => "JSONModel(:extent) object"}},
       
       # Dates (overrides abstract schema)
       "dates" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" => "JSONModel(:date) object"}},
