@@ -58,8 +58,8 @@
       # Extents (overrides default schema: no longer required)
       "extents" => {"type" => "array",  "minItems" => 0, "items" => {"type" => "JSONModel(:extent) object"}},
       
-      # Dates (overrides abstract schema)
-      "dates" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" => "JSONModel(:date) object"}},
+      # Dates (overrides default schema: no longer required)
+      "dates" => {"type" => "array",  "minItems" => 0, "items" => {"type" => "JSONModel(:date) object"}},
 
       "instances" => {"type" => "array", "items" => {"type" => "JSONModel(:instance) object"}},
       "deaccessions" => {"type" => "array", "items" => {"type" => "JSONModel(:deaccession) object"}},
