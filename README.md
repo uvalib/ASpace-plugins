@@ -108,5 +108,24 @@ Change option defaults on EAD export to "Use numbered <c> tags" _checked._
 	+              <input type="checkbox" id="numbered-cs" name="numbered_cs"  checked="checked" />
 	               <%= I18n.t("export_options.numbered_cs") %>&#160;
 	             </label>
-	             
+
+---	             
+### schemas/resource.rb
+
+Make extents not required for resources so we can import our legacy EAD guides
+and use ArchivesSpace to edit. 
+
+	@@ -55,8 +55,8 @@
+	       "finding_aid_status" => {"type" => "string", "dynamic_enum" => "resource_finding_aid_status"},
+	       "finding_aid_note" => {"type" => "string", "maxLength" => 65000},
+	 
+	-      # Extents (overrides abstract schema)
+	-      "extents" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" => "J
+	+      # Extents (overrides default schema: no longer required)
+	+      "extents" => {"type" => "array",  "minItems" => 0, "items" => {"type" => "JSONModel(:extent) objec
+	       
+	       # Dates (overrides abstract schema)
+	       "dates" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" => "JSO
+	
+	
 	    
