@@ -112,20 +112,24 @@ Change option defaults on EAD export to "Use numbered <c> tags" _checked._
 ---	             
 ### schemas/resource.rb
 
-Make extents not required for resources so we can import our legacy EAD guides
-and use ArchivesSpace to edit. 
+Make extents and dates not required for resources so we can import our legacy EAD guides and use ArchivesSpace to edit. 
 
-	@@ -55,8 +55,8 @@
-	       "finding_aid_status" => {"type" => "string", "dynamic_enum" => "resource_finding_aid_status"},
+	@@ -55,11 +55,11 @@
+	       "finding_aid_status" => {"type" => "string", "dynamic_enum" => "resource_finding_aid_status"}
 	       "finding_aid_note" => {"type" => "string", "maxLength" => 65000},
 	 
 	-      # Extents (overrides abstract schema)
-	-      "extents" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" => "J
+	-      "extents" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" 
 	+      # Extents (overrides default schema: no longer required)
-	+      "extents" => {"type" => "array",  "minItems" => 0, "items" => {"type" => "JSONModel(:extent) objec
+	+      "extents" => {"type" => "array",  "minItems" => 0, "items" => {"type" => "JSONModel(:extent) 
 	       
-	       # Dates (overrides abstract schema)
-	       "dates" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" => "JSO
+	-      # Dates (overrides abstract schema)
+	-      "dates" => {"type" => "array", "ifmissing" => "error", "minItems" => 1, "items" => {"type" =>
+	+      # Dates (overrides default schema: no longer required)
+	+      "dates" => {"type" => "array",  "minItems" => 0, "items" => {"type" => "JSONModel(:date) obje
+	 
+	       "instances" => {"type" => "array", "items" => {"type" => "JSONModel(:instance) object"}},
+	       "deaccessions" => {"type" => "array", "items" => {"type" => "JSONModel(:deaccession) object"}
 	
 	
 	    
